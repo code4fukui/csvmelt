@@ -1,4 +1,4 @@
-# csvbeauty
-SJISやBOM無しUTF-8のCSVファイルをBOM付きUTF-8 CSVへと変換するツール  
-https://code4sabae.github.io/csvbeauty/  
+# csvmelt
 
+- 横持ちのCSVファイルを縦持ちCSVに変換するツール
+- https://code4sabae.github.io/csvbeauty/  
