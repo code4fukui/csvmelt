@@ -8,8 +8,8 @@
 <title>csvmelt</title>
 <meta property="og:title" content="csvmelt">
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://code4fukui.github.io/csvbeauty/csvmelt.png">
-<meta property="og:image"  content="https://code4fukui.github.io/csvbeauty/csvmelt.png">
+<meta name="twitter:image" content="https://code4fukui.github.io/csvmelt/csvmelt.png">
+<meta property="og:image"  content="https://code4fukui.github.io/csvmelt/csvmelt.png">
 <script type="module">
 import { CSV } from "https://code4sabae.github.io/js/CSV.js";
 import { SJIS } from "https://code4sabae.github.io/js/SJIS.js";
@@ -55,10 +55,11 @@ const interactiveMelt = async (csv) => {
         const c = create("input");
         return c;
     };
-    text("削除する要素（Ctrlで複数選択可）");
+
+    text("削除する要素（Ctrl/commandで複数選択可）");
     const names = Object.keys(data[0]);
     const selremoves = selectMulti(names);
-    text("残す要素（Ctrlで複数選択可）");
+    text("残す要素（Ctrl/commandで複数選択可）");
     const selkeeps = selectMulti(names);
     text("縦持ちする要素の項目名");
     const inname = input();
@@ -73,11 +74,7 @@ const interactiveMelt = async (csv) => {
     await waitClick(btn);
 
     const removes = selremoves.values();
-    data.forEach(d => {
-        for (const r of removes) {
-            delete d[r];
-        }
-    });
+    ArrayUtil.removeByKeys(data, removes);
     const data2 = ArrayUtil.melt(data, selkeeps.values(), inname.value, invalue.value);
     return CSV.fromJSON(data2);
 };
