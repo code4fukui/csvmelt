@@ -1,5 +1,7 @@
 # csvmelt
 
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
+
 Tool to convert a horizontally-oriented CSV file to a vertically-oriented CSV.
 
 ## lib
